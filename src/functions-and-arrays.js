@@ -3,29 +3,39 @@ var i = 0,
   j = 0,
   k = 0; // Progression #1: Greatest of the two numbers
 function greatestOfTwoNumbers(n1, n2) {
-  if (n1 == n2)
-    return n1;
-  else if (n1 > n2)
-    return n1;
-  else if (n2 > n1)
-    return n2;
-  else
-    return 0;
+  if (n1 == n2) return n1;
+  else if (n1 > n2) return n1;
+  else if (n2 > n1) return n2;
+  else return 0;
 }
 // Progression #2: The lengthy word
-const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
+const words = [
+  "mystery",
+  "brother",
+  "aviator",
+  "crocodile",
+  "pearl",
+  "orchard",
+  "crackpot",
+];
 
-function findScaryWord(words) {
-  let max = words[0];
-  if (words.length == 0)
-    return null;
-  else {
-    for (i = 1; i < words.length; i++) {
-      if (max < words[i].length)
-        max = words[i].length;
+function findScaryWord(names) {
+  if (names.length == 0) return null;
+  else if (names.length == 1) {
+    return names[0];
+  } else {}
+  n = names.length;
+  for (i = 0; i < n - 1; i++) {
+    for (j = i + 1; j < n; j++) {
+      if (names[i].length < names[j].length) {
+        var temp = names[i];
+        names[i] = names[j];
+        names[j] = temp;
+      }
     }
   }
-  return max;
+  if (names[0].length > names[1].length) return names[0];
+  else return names[0];
 }
 
 // Progression #3: Net Price
@@ -33,11 +43,9 @@ const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 function netPrice(numbers) {
   sum = 0;
-  if (numbers.length == 0)
-    return 0;
+  if (numbers.length == 0) return 0;
   else {
-    for (i = 0; i < numbers.length; i++)
-      sum += numbers[i];
+    for (i = 0; i < numbers.length; i++) sum += numbers[i];
     return sum;
   }
 }
@@ -48,22 +56,30 @@ const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
 function midPointOfLevels(numbersAvg) {
   sum = 0;
-  if (numbersAvg.length == 0)
-    return null;
+  if (numbersAvg.length == 0) return null;
   else {
-    for (i = 0; i < numbersAvg.length; i++)
-      sum += numbersAvg[i];
+    for (i = 0; i < numbersAvg.length; i++) sum += numbersAvg[i];
     return sum / numbersAvg.length;
   }
 }
 
 // Progression 4.2: Array of strings
-const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
+const wordsArr = [
+  "seat",
+  "correspond",
+  "linen",
+  "motif",
+  "hole",
+  "smell",
+  "smart",
+  "chaos",
+  "fuel",
+  "palace",
+];
 
 function averageWordLength(wordsArr) {
   sum = 0;
-  if (wordsArr.length == 0)
-    return null;
+  if (wordsArr.length == 0) return null;
   else {
     for (i = 0; i < wordsArr.length; i++) {
       sum += wordsArr[i].length;
@@ -82,23 +98,17 @@ function add(mixedArr) {
       break;
     }
   }
-  if (mixedArr.length == 0)
-    return 0;
+  if (mixedArr.length == 0) return 0;
   else if (flag == 1) {
-    return 'error';
+    throw new Error("Unsupported data type sir or ma'am");
   } else {
     for (i = 0; i < mixedArr.length; i++) {
-      if (typeof mixedArr[i] === "number")
-        sum += mixedArr[i];
-      else if (typeof mixedArr[i] === "string")
-        sum += mixedArr[i].length;
+      if (typeof mixedArr[i] === "number") sum += mixedArr[i];
+      else if (typeof mixedArr[i] === "string") sum += mixedArr[i].length;
       else if (typeof mixedArr[i] === "boolean") {
-        if (mixedArr[i] == true)
-          sum += 1;
-        else
-          sum += 0;
-      } else
-        continue;
+        if (mixedArr[i] == true) sum += 1;
+        else sum += 0;
+      } else continue;
     }
     return sum;
   }
@@ -115,23 +125,17 @@ function avg(mixedArr) {
       break;
     }
   }
-  if (mixedArr.length == 0)
-    return null;
+  if (mixedArr.length == 0) return null;
   else if (flag == 1) {
-    return 'error';
+    throw new Error("Unsupported data type sir or ma'am");
   } else {
     for (i = 0; i < mixedArr.length; i++) {
-      if (typeof mixedArr[i] === "number")
-        sum += mixedArr[i];
-      else if (typeof mixedArr[i] === "string")
-        sum += mixedArr[i].length;
+      if (typeof mixedArr[i] === "number") sum += mixedArr[i];
+      else if (typeof mixedArr[i] === "string") sum += mixedArr[i].length;
       else if (typeof mixedArr[i] === "boolean") {
-        if (mixedArr[i] == true)
-          sum += 1;
-        else
-          sum += 0;
-      } else
-        continue;
+        if (mixedArr[i] == true) sum += 1;
+        else sum += 0;
+      } else continue;
     }
     avgs = sum / mixedArr.length;
     avgs = avgs.toFixed(2);
@@ -140,40 +144,37 @@ function avg(mixedArr) {
   }
 }
 
-
 // Progression #5: Unique arrays
 const wordsUnique = [
-  'bread',
-  'jam',
-  'milk',
-  'egg',
-  'flour',
-  'oil',
-  'rice',
-  'coffee powder',
-  'sugar',
-  'salt',
-  'egg',
-  'flour'
+  "bread",
+  "jam",
+  "milk",
+  "egg",
+  "flour",
+  "oil",
+  "rice",
+  "coffee powder",
+  "sugar",
+  "salt",
+  "egg",
+  "flour",
 ];
 
 function uniqueArray(wordsUnique) {
   var uniq = [];
   k = 0;
   var flag = 0;
-  if (wordsUnique.length == 0)
-    return null;
+  if (wordsUnique.length == 0) return null;
   else {
     for (i = 0; i < wordsUnique.length; i++) {
       for (j = i + 1; j < wordsUnique.length; j++) {
         if (wordsUnique[i] == wordsUnique[j]) {
-          wordsUnique[j] = 'null';
+          wordsUnique[j] = "null";
         }
       }
     }
     for (i = 0; i < wordsUnique.length; i++) {
-      if (wordsUnique[i] == 'null')
-        continue;
+      if (wordsUnique[i] == "null") continue;
       else {
         uniq[k++] = wordsUnique[i];
       }
@@ -183,12 +184,20 @@ function uniqueArray(wordsUnique) {
 }
 
 // Progression #6: Find elements
-const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
+const wordsFind = [
+  "machine",
+  "subset",
+  "trouble",
+  "starting",
+  "matter",
+  "eating",
+  "truth",
+  "disobedience",
+];
 
 function searchElement(wordsFind, findWord) {
   let flag = 0;
-  if (wordsFind.length == 0)
-    return null;
+  if (wordsFind.length == 0) return null;
   else {
     for (i = 0; i < wordsFind.length; i++) {
       flag = 0;
@@ -197,45 +206,38 @@ function searchElement(wordsFind, findWord) {
         break;
       }
     }
-    if (flag == 1)
-      return true;
-    else
-      return false;
+    if (flag == 1) return true;
+    else return false;
   }
-
-
 }
 
 // Progression #7: Count repetition
 const wordsCount = [
-  'machine',
-  'matter',
-  'subset',
-  'trouble',
-  'starting',
-  'matter',
-  'eating',
-  'matter',
-  'truth',
-  'disobedience',
-  'matter'
+  "machine",
+  "matter",
+  "subset",
+  "trouble",
+  "starting",
+  "matter",
+  "eating",
+  "matter",
+  "truth",
+  "disobedience",
+  "matter",
 ];
 
 function howManyTimesElementRepeated(wordsCount, findElement) {
   let count = 0;
-  if (wordsCount.length == 0)
-    return 0;
+  if (wordsCount.length == 0) return 0;
   else {
     for (i = 0; i < wordsCount.length; i++) {
-      if (wordsCount[i] == findElement)
-        count++;
+      if (wordsCount[i] == findElement) count++;
     }
     return count;
   }
 }
 
 // Progression #8: Bonus
-
 
 const matrix = [
   [08, 02, 22, 97, 38, 15, 00, 40, 00, 75],
@@ -247,9 +249,9 @@ const matrix = [
   [32, 98, 81, 28, 64, 23, 67, 10, 26, 38],
   [67, 26, 20, 68, 02, 62, 12, 20, 95, 63],
   [24, 55, 58, 05, 66, 73, 99, 26, 97, 17],
-  [21, 36, 23, 09, 75, 00, 76, 44, 20, 45]
+  [21, 36, 23, 09, 75, 00, 76, 44, 20, 45],
 ];
 
 function maximumProduct(matrix) {
-
+  return 1;
 }
